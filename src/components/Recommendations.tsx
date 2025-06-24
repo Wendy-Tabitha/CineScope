@@ -34,7 +34,7 @@ export function Recommendations({ watchlistTitles }: RecommendationsProps) {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 font-headline text-accent">
           <Wand2 />
-          AI Recommendation Engine
+          Recommendations
         </CardTitle>
       </CardHeader>
       <CardContent>
