@@ -37,10 +37,13 @@ export function useWatchlist() {
     const title = 'title' in item ? item.title : item.name;
     const newItem: WatchlistItem = {
       id: item.id,
-      type: item.media_type === 'movie' ? 'movie' : 'tv',
+      media_type: item.media_type,
       title: title,
       poster_path: item.poster_path,
       watched: false,
+      vote_average: item.vote_average,
+      release_date: 'release_date' in item ? item.release_date : undefined,
+      first_air_date: 'first_air_date' in item ? item.first_air_date : undefined,
     };
     setWatchlist(prev => [newItem, ...prev.filter(i => i.id !== newItem.id)]);
     toast({ title: "Added to Watchlist", description: `${title} has been added.` });

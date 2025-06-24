@@ -37,7 +37,7 @@ export default function MediaCard({ item }: MediaCardProps) {
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-4">
              <div className="flex items-center gap-2 text-sm text-yellow-400">
                 <Star className="w-4 h-4 fill-current" />
-                <span>{item.vote_average.toFixed(1)}</span>
+                <span>{item.vote_average ? item.vote_average.toFixed(1) : 'N/A'}</span>
             </div>
             <Link href={linkPath}>
               <h3 className="font-bold text-lg text-white truncate group-hover:text-primary transition-colors">{title}</h3>

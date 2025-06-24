@@ -78,8 +78,11 @@ export interface DetailedTVShow extends TVShow {
 
 export type WatchlistItem = {
   id: number;
-  type: 'movie' | 'tv';
+  media_type: 'movie' | 'tv';
   title: string;
   poster_path: string | null;
   watched: boolean;
+  vote_average: number;
+  release_date?: string;
+  first_air_date?: string;
 };
