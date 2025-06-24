@@ -49,6 +49,17 @@ export async function getTvGenres(): Promise<Genre[]> {
   return genres;
 }
 
-export function getMoviesByGenre(genreId: string, page: number = 1): Promise<PaginatedResponse<Movie>> {
-    return fetcher('/discover/movie', { with_genres: genreId, page: String(page) });
+export async function getMoviesByGenre(genreId: string, page: number = 1): Promise<PaginatedResponse<Movie>> {
+    const response = await fetcher<PaginatedResponse<Omit<Movie, 'media_type'>>>('/discover/movie', { 
+        with_genres: genreId, 
+        page: String(page) 
+    });
+    
+    return {
+        ...response,
+        results: response.results.map(movie => ({
+            ...movie,
+            media_type: 'movie' as const
+        }))
+    };
 }
