@@ -1,6 +1,10 @@
 import type { PaginatedResponse, Movie, TVShow, Media, Genre, DetailedMovie, DetailedTVShow } from './types';
 
-const API_KEY = 'e007978a0c1bcd533b4ce3e56bbe0129';
+if (!process.env.NEXT_PUBLIC_TMDB_API_KEY) {
+  throw new Error('NEXT_PUBLIC_TMDB_API_KEY environment variable is not set');
+}
+
+const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 export const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 export const POSTER_PLACEHOLDER = 'https://placehold.co/500x750/222222/E6E6FA?text=CineScope';
